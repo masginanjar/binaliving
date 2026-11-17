@@ -7,7 +7,7 @@
 <meta name="description" content="BINA LIVING: desain interior, kontraktor interior, dan konsultan bangunan. Ceritakan kebutuhan proyek Anda melalui WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* Layout: kolom asimetris 5/7, ruang kosong lega, garis tipis sebagai pemisah, satu bagian charcoal (Proses) sebagai jeda. */
 :root{
@@ -20,8 +20,8 @@
   --charcoal:#2A2825;
   --wood:#B28F66;
   --line:rgba(42,40,37,.14);
-  --display:"Shippori Mincho","Noto Serif",Georgia,"Times New Roman",serif;
-  --body:"Zen Kaku Gothic New","Helvetica Neue",Arial,sans-serif;
+  --display:"Shippori Mincho","Noto Naskh Arabic","Songti SC","Noto Serif SC","SimSun",Georgia,"Times New Roman",serif;
+  --body:"Zen Kaku Gothic New","Noto Naskh Arabic","PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
   --gutter:clamp(20px,5vw,72px);
   --section:clamp(72px,11vw,150px);
 }
@@ -56,11 +56,28 @@ header{position:sticky;top:0;z-index:40;background:rgba(247,242,232,.9);backdrop
 .logo{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:.26em;white-space:nowrap}
 .menu{display:flex;align-items:center;gap:34px;list-style:none}
 .menu a{font-size:14px;letter-spacing:.05em;color:var(--taupe);padding:8px 0;position:relative;transition:color .3s}
-.menu a::after{content:"";position:absolute;left:0;bottom:2px;height:1px;width:0;background:var(--charcoal);transition:width .35s ease}
+.menu a::after{content:"";position:absolute;inset-inline-start:0;bottom:2px;height:1px;width:0;background:var(--charcoal);transition:width .35s ease}
 .menu a:hover{color:var(--charcoal)}
 .menu a:hover::after{width:100%}
 .nav .btn{min-height:44px;padding:10px 22px;font-size:13.5px}
-.burger{display:none;width:48px;height:48px;background:none;border:0;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:7px;margin-right:-10px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{appearance:none;-webkit-appearance:none;font-family:var(--body);font-size:13.5px;font-weight:500;color:var(--charcoal);background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%232A2825' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 12px center;border:1px solid var(--line);border-radius:999px;min-height:44px;padding:8px 30px 8px 14px;cursor:pointer;max-width:128px}
+[dir="rtl"] .lang{background-position:left 12px center;padding:8px 14px 8px 30px}
+[dir="rtl"] :not(.logo){letter-spacing:0 !important}
+[dir="rtl"] .arrow{display:inline-block;transform:scaleX(-1)}
+[dir="rtl"] .btn:hover .arrow{transform:scaleX(-1) translateX(4px)}
+html[lang="zh"] .eyebrow,html[lang="ja"] .eyebrow{letter-spacing:.12em}
+html[lang="zh"] h1,html[lang="ja"] h1,html[lang="ar"] h1{line-height:1.35}
+
+/* Katalog */
+.cat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3.4vw,48px) clamp(16px,2.6vw,36px)}
+.cat-card .figure{aspect-ratio:4/5;margin-bottom:16px}
+.cat-card img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.cat-card:hover img{transform:scale(1.04)}
+.cat-card h3{font-size:clamp(19px,1.8vw,23px);margin-bottom:6px}
+.cat-card p{color:var(--taupe);font-size:15px;line-height:1.6}
+.cat-more{margin-top:clamp(36px,5vw,60px)}
+.burger{display:none;width:48px;height:48px;background:none;border:0;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:7px;margin-inline-end:-10px}
 .burger span{display:block;width:24px;height:1.5px;background:var(--charcoal);transition:transform .3s ease}
 .burger[aria-expanded="true"] span:first-child{transform:translateY(4.25px) rotate(45deg)}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-4.25px) rotate(-45deg)}
@@ -75,8 +92,11 @@ header{position:sticky;top:0;z-index:40;background:rgba(247,242,232,.9);backdrop
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
 .hero-note{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--taupe);max-width:46ch}
 .figure{position:relative;background:var(--beige);overflow:hidden}
-.figure svg{width:100%;height:auto}
-.tag{position:absolute;left:14px;bottom:14px;background:rgba(247,242,232,.92);color:var(--taupe);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:7px 12px;font-weight:500}
+.figure img{width:100%;height:100%;object-fit:cover}
+.hero .figure{aspect-ratio:4/5}
+.about .figure{aspect-ratio:5/4}
+.cta .figure{aspect-ratio:5/4}
+.tag{position:absolute;inset-inline-start:14px;bottom:14px;background:rgba(247,242,232,.92);color:var(--taupe);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:7px 12px;font-weight:500}
 .hero .figure{border-radius:220px 220px 0 0}
 
 @media (prefers-reduced-motion:no-preference){
@@ -93,7 +113,7 @@ header{position:sticky;top:0;z-index:40;background:rgba(247,242,232,.9);backdrop
 .about h2,.sec-head h2,.cta h2{font-size:clamp(30px,4vw,52px);line-height:1.28}
 .about h2{margin:20px 0 30px}
 .about p{color:var(--taupe);margin-bottom:18px}
-.about p.closing{font-family:var(--display);font-size:clamp(19px,1.8vw,23px);line-height:1.6;color:var(--charcoal);margin-top:30px;padding-left:20px;border-left:1px solid var(--charcoal)}
+.about p.closing{font-family:var(--display);font-size:clamp(19px,1.8vw,23px);line-height:1.6;color:var(--charcoal);margin-top:30px;padding-inline-start:20px;border-inline-start:1px solid var(--charcoal)}
 
 /* Kepala bagian */
 .sec-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(40px,6vw,76px)}
@@ -146,35 +166,46 @@ footer .block a:hover{border-color:var(--charcoal)}
 .copy{margin-top:56px;padding-top:22px;border-top:1px solid rgba(42,40,37,.2);font-size:12.5px;color:var(--taupe);letter-spacing:.04em}
 
 /* Tombol chat mengambang */
-.chat{position:fixed;right:20px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:14px 24px 14px 20px;background:var(--charcoal);color:var(--ivory);border-radius:999px;font-size:14.5px;font-weight:500;letter-spacing:.03em;box-shadow:0 10px 30px rgba(42,40,37,.28);transition:transform .35s ease,background .35s ease}
+.chat{position:fixed;inset-inline-end:20px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:14px 24px 14px 20px;background:var(--charcoal);color:var(--ivory);border-radius:999px;font-size:14.5px;font-weight:500;letter-spacing:.03em;box-shadow:0 10px 30px rgba(42,40,37,.28);transition:transform .35s ease,background .35s ease}
 .chat:hover{transform:translateY(-3px);background:#45413b}
 .chat svg{width:20px;height:20px;flex:none}
 
 /* Tablet & ponsel */
-@media (max-width:960px){
-  .menu,.nav > .btn{display:none}
+@media (max-width:1120px){
+  .menu,.nav-right > .btn{display:none}
   .burger{display:flex}
-  .menu.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ivory);border-bottom:1px solid var(--line);padding:8px var(--gutter) 24px}
+  .menu.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ivory);border-bottom:1px solid var(--line);padding:8px var(--gutter) 24px;max-height:calc(100vh - 72px);overflow-y:auto}
   .menu.open li{border-bottom:1px solid var(--line)}
   .menu.open a{display:block;padding:16px 0;font-size:16px;color:var(--charcoal)}
   .menu.open a::after{display:none}
   .menu.open li.menu-cta{border:0;padding-top:20px}
   .menu.open li.menu-cta a{display:flex;color:var(--ivory);padding:14px 28px;font-size:14.5px}
+}
+@media (max-width:960px){
   .hero-grid,.about-grid,.cta-grid,.sec-head{grid-template-columns:1fr}
   .hero .figure{max-width:520px;margin:0 auto;width:100%}
   .service{grid-template-columns:1fr;gap:10px}
   .service h3{padding-top:0}
   .approach-grid,.steps{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .foot-grid{grid-template-columns:1fr 1fr}
   .foot-grid > :first-child{grid-column:1/-1}
 }
-@media (min-width:961px){.menu-cta{display:none}}
+@media (min-width:1121px){.menu-cta{display:none}}
 @media (max-width:560px){
   body{font-size:16px}
   .nav{height:64px}
   .menu.open{top:64px}
-  .logo{font-size:17px;letter-spacing:.22em}
+  .logo{font-size:15.5px;letter-spacing:.18em}
+  .nav{gap:10px}
+  .nav-right{gap:4px}
+  .lang{font-size:13px;padding:6px 26px 6px 12px;min-height:40px;max-width:104px}
+  .cat-card h3{font-size:17px}
+  .cat-card p{font-size:13.5px}
+  .cat-card .figure{margin-bottom:12px}
+  .tag{font-size:9px;letter-spacing:.14em;padding:5px 8px;inset-inline-start:8px;bottom:8px}
   .hero-actions .btn,.cta .btn,.process .btn{width:100%}
+  .menu.open{max-height:calc(100vh - 64px)}
   .foot-grid{grid-template-columns:1fr}
   .chat{left:16px;right:16px;justify-content:center;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
   .hero .figure{border-radius:160px 160px 0 0}
@@ -186,16 +217,27 @@ footer .block a:hover{border-color:var(--charcoal)}
 <header>
   <div class="wrap nav">
     <a class="logo" href="#beranda" data-scroll>BINA LIVING</a>
-    <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <ul class="menu" id="menu">
       <li><a href="#beranda" data-scroll>Beranda</a></li>
       <li><a href="#tentang" data-scroll>Tentang</a></li>
       <li><a href="#layanan" data-scroll>Layanan</a></li>
+      <li><a href="#katalog" data-scroll>Katalog</a></li>
       <li><a href="#proses" data-scroll>Proses</a></li>
       <li><a href="#kontak" data-scroll>Kontak</a></li>
       <li class="menu-cta"><a class="btn btn-solid wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Konsultasikan Proyek</a></li>
     </ul>
-    <a class="btn btn-solid wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Konsultasikan Proyek</a>
+    <div class="nav-right">
+      <select class="lang" id="lang" aria-label="Bahasa / Language">
+        <option value="id">Indonesia</option>
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="it">Italiano</option>
+      </select>
+      <a class="btn btn-solid wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Konsultasikan Proyek</a>
+      <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -216,52 +258,8 @@ footer .block a:hover{border-color:var(--charcoal)}
     </div>
 
     <figure class="figure rise d1">
-      <!-- GANTI dengan foto interior asli bila sudah tersedia -->
-      <svg viewBox="0 0 500 640" role="img" aria-label="Ilustrasi ruang keluarga dengan material kayu dan cahaya lembut">
-        <defs>
-          <linearGradient id="wallA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EFE6D6"/><stop offset="1" stop-color="#DFD1BA"/></linearGradient>
-          <linearGradient id="floorA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9AE8A"/><stop offset="1" stop-color="#B8996F"/></linearGradient>
-          <radialGradient id="lampA" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF6DF" stop-opacity=".95"/><stop offset="1" stop-color="#FFF6DF" stop-opacity="0"/></radialGradient>
-          <linearGradient id="lightA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF8E8" stop-opacity=".75"/><stop offset="1" stop-color="#FFF8E8" stop-opacity="0"/></linearGradient>
-        </defs>
-        <rect width="500" height="640" fill="url(#wallA)"/>
-        <!-- jendela shoji -->
-        <rect x="52" y="120" width="150" height="290" fill="#FBF6EA"/>
-        <g stroke="#B28F66" stroke-width="3" fill="none">
-          <rect x="52" y="120" width="150" height="290"/>
-          <path d="M102 120V410M152 120V410M52 192H202M52 265H202M52 338H202"/>
-        </g>
-        <polygon points="202,150 420,470 202,470" fill="url(#lightA)"/>
-        <!-- panel bilah kayu -->
-        <g fill="#B28F66">
-          <rect x="330" y="0" width="9" height="470"/><rect x="352" y="0" width="9" height="470"/><rect x="374" y="0" width="9" height="470"/><rect x="396" y="0" width="9" height="470"/><rect x="418" y="0" width="9" height="470"/><rect x="440" y="0" width="9" height="470"/><rect x="462" y="0" width="9" height="470"/><rect x="484" y="0" width="9" height="470"/>
-        </g>
-        <!-- lampu lentera -->
-        <path d="M268 0V150" stroke="#2A2825" stroke-width="1.5"/>
-        <circle class="glow" cx="268" cy="196" r="110" fill="url(#lampA)"/>
-        <ellipse cx="268" cy="196" rx="50" ry="44" fill="#FBF3DF"/>
-        <g stroke="#DCCBAA" stroke-width="1" fill="none"><ellipse cx="268" cy="196" rx="50" ry="44"/><path d="M220 182H316M218 196H318M220 210H316M228 168H308M228 224H308"/></g>
-        <!-- lantai -->
-        <rect y="470" width="500" height="170" fill="url(#floorA)"/>
-        <path d="M0 520H500M0 578H500" stroke="#A88A62" stroke-width="1" opacity=".6"/>
-        <!-- karpet -->
-        <ellipse cx="250" cy="560" rx="210" ry="38" fill="#E9DFCC"/>
-        <!-- sofa rendah -->
-        <rect x="110" y="388" width="250" height="56" rx="16" fill="#E5DAC6"/>
-        <rect x="96" y="430" width="278" height="52" rx="12" fill="#D8CAB2"/>
-        <rect x="96" y="474" width="278" height="12" fill="#9C7B55"/>
-        <rect x="108" y="486" width="8" height="22" fill="#7E6243"/><rect x="354" y="486" width="8" height="22" fill="#7E6243"/>
-        <rect x="150" y="402" width="66" height="44" rx="10" fill="#8C7B6B"/>
-        <rect x="226" y="408" width="60" height="38" rx="10" fill="#F4EDDF"/>
-        <!-- meja kopi -->
-        <ellipse cx="270" cy="536" rx="74" ry="12" fill="#8E6F4C"/>
-        <path d="M222 540V572M318 540V572" stroke="#6E553A" stroke-width="5"/>
-        <rect x="250" y="512" width="22" height="18" rx="4" fill="#F4EDDF"/>
-        <!-- vas dan ranting -->
-        <path d="M420 470c-16 0-22-22-22-44s8-34 22-34 22 12 22 34-6 44-22 44z" fill="#3A3733"/>
-        <g stroke="#6F6155" stroke-width="2" fill="none" stroke-linecap="round"><path d="M420 392C418 330 400 290 372 250"/><path d="M420 380C426 320 446 290 458 240"/><path d="M412 330C398 322 388 318 376 320"/><path d="M430 320C440 306 446 300 462 298"/></g>
-        <g fill="#8C9A78"><ellipse cx="370" cy="248" rx="9" ry="5" transform="rotate(-40 370 248)"/><ellipse cx="376" cy="318" rx="9" ry="5"/><ellipse cx="460" cy="238" rx="9" ry="5" transform="rotate(-70 460 238)"/><ellipse cx="464" cy="296" rx="9" ry="5" transform="rotate(-15 464 296)"/><ellipse cx="392" cy="282" rx="8" ry="4.5" transform="rotate(-55 392 282)"/><ellipse cx="444" cy="278" rx="8" ry="4.5" transform="rotate(-65 444 278)"/></g>
-      </svg>
+      <!-- Foto contoh dari Pexels. GANTI dengan foto asli bila sudah tersedia -->
+      <img src="https://images.pexels.com/photos/8251293/pexels-photo-8251293.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Ruang keluarga dengan furnitur kayu" decoding="async">
       <figcaption class="tag">Inspirasi Interior</figcaption>
     </figure>
   </div>
@@ -271,39 +269,8 @@ footer .block a:hover{border-color:var(--charcoal)}
 <section class="about" id="tentang">
   <div class="wrap about-grid">
     <figure class="figure">
-      <!-- GANTI dengan foto interior asli bila sudah tersedia -->
-      <svg viewBox="0 0 560 460" role="img" aria-label="Ilustrasi ruang makan dengan meja kayu dan lampu gantung">
-        <defs>
-          <linearGradient id="wallB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E4D8C3"/><stop offset="1" stop-color="#F1E9DA"/></linearGradient>
-          <radialGradient id="lampB" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF4D9" stop-opacity=".9"/><stop offset="1" stop-color="#FFF4D9" stop-opacity="0"/></radialGradient>
-        </defs>
-        <rect width="560" height="460" fill="url(#wallB)"/>
-        <!-- ceruk lengkung -->
-        <path d="M360 340V150a70 70 0 0 1 140 0V340z" fill="#D3C2A6"/>
-        <rect x="372" y="228" width="116" height="5" fill="#9C7B55"/>
-        <rect x="384" y="198" width="22" height="30" rx="8" fill="#F6F0E3"/><rect x="418" y="184" width="16" height="44" rx="7" fill="#3A3733"/><circle cx="462" cy="214" r="14" fill="#B28F66"/>
-        <rect x="372" y="296" width="116" height="5" fill="#9C7B55"/>
-        <rect x="390" y="270" width="40" height="26" rx="4" fill="#8C7B6B"/><rect x="440" y="262" width="12" height="34" fill="#F6F0E3"/><rect x="455" y="268" width="12" height="28" fill="#C9B79A"/>
-        <!-- lampu gantung -->
-        <path d="M190 0V96" stroke="#2A2825" stroke-width="1.5"/>
-        <circle class="glow" cx="190" cy="150" r="120" fill="url(#lampB)"/>
-        <path d="M130 140a60 46 0 0 1 120 0z" fill="#2A2825"/>
-        <rect x="128" y="138" width="124" height="5" fill="#B28F66"/>
-        <!-- lantai -->
-        <rect y="340" width="560" height="120" fill="#C4A781"/>
-        <path d="M0 384H560M0 426H560" stroke="#A88A62" stroke-width="1" opacity=".6"/>
-        <!-- meja -->
-        <rect x="60" y="268" width="270" height="12" rx="2" fill="#8E6F4C"/>
-        <path d="M84 280L70 410M306 280L320 410" stroke="#7A5E40" stroke-width="8" stroke-linecap="round"/>
-        <!-- kursi -->
-        <g stroke="#3A3733" stroke-width="5" stroke-linecap="round" fill="none"><path d="M118 300V410M168 300V410M118 232V300M168 232V300"/><path d="M228 300V410M278 300V410M228 232V300M278 232V300"/></g>
-        <rect x="112" y="296" width="62" height="10" rx="4" fill="#D8CAB2"/><rect x="222" y="296" width="62" height="10" rx="4" fill="#D8CAB2"/>
-        <rect x="116" y="228" width="54" height="26" rx="6" fill="#3A3733"/><rect x="226" y="228" width="54" height="26" rx="6" fill="#3A3733"/>
-        <!-- mangkuk dan vas -->
-        <path d="M160 268a30 16 0 0 0 60 0z" fill="#F6F0E3"/>
-        <rect x="262" y="238" width="16" height="30" rx="6" fill="#B28F66"/>
-        <path d="M270 238C268 214 262 204 254 192M270 238C274 216 282 208 288 198" stroke="#6F6155" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      </svg>
+      <!-- Foto contoh dari Pexels. GANTI dengan foto asli bila sudah tersedia -->
+      <img src="https://images.pexels.com/photos/8251248/pexels-photo-8251248.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Interior dengan furnitur kayu dan dekorasi sederhana" loading="lazy" decoding="async">
       <figcaption class="tag">Inspirasi Interior</figcaption>
     </figure>
     <div>
@@ -332,7 +299,7 @@ footer .block a:hover{border-color:var(--charcoal)}
       <p class="tagline">Mengolah ide menjadi ruang yang punya karakter.</p>
       <div>
         <p>Pembahasan tata letak, warna, material, dan suasana ruang untuk menemukan desain yang selaras dengan kebutuhan serta gaya Anda.</p>
-        <a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Diskusikan Desain Interior <span aria-hidden="true">→</span></a>
+        <a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Diskusikan Desain Interior <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </article>
 
@@ -341,7 +308,7 @@ footer .block a:hover{border-color:var(--charcoal)}
       <p class="tagline">Membawa rencana desain menjadi nyata.</p>
       <div>
         <p>Pelaksanaan pekerjaan interior berdasarkan desain dan lingkup kerja yang disepakati, dengan perhatian pada fungsi, material, serta detail pengerjaan.</p>
-        <a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Bahas Pengerjaan Interior <span aria-hidden="true">→</span></a>
+        <a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Bahas Pengerjaan Interior <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </article>
 
@@ -350,7 +317,7 @@ footer .block a:hover{border-color:var(--charcoal)}
       <p class="tagline">Melangkah dengan pertimbangan yang lebih jelas.</p>
       <div>
         <p>Diskusikan kebutuhan bangunan, rencana pengembangan, atau renovasi agar Anda memiliki arah sebelum menentukan langkah berikutnya.</p>
-        <a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Konsultasikan Rencana Bangunan <span aria-hidden="true">→</span></a>
+        <a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Konsultasikan Rencana Bangunan <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </article>
   </div>
@@ -379,6 +346,52 @@ footer .block a:hover{border-color:var(--charcoal)}
         <p>Kebutuhan, anggaran, dan lingkup pekerjaan menjadi bahan pembahasan sejak awal.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- KATALOG: isi contoh (foto Pexels). Ganti foto, judul, dan keterangan dengan katalog asli. -->
+<section id="katalog">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Katalog</p>
+        <h2>Inspirasi untuk setiap ruang.</h2>
+      </div>
+      <p>Contoh suasana dan gaya ruang sebagai bahan diskusi awal. Ceritakan mana yang paling mendekati keinginan Anda.</p>
+    </div>
+    <div class="cat-grid">
+      <article class="cat-card">
+        <figure class="figure"><img src="https://images.pexels.com/photos/8251544/pexels-photo-8251544.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Ruang Keluarga" loading="lazy" decoding="async"><figcaption class="tag">Inspirasi Interior</figcaption></figure>
+        <h3>Ruang Keluarga</h3>
+        <p>Sofa rendah, kayu hangat, dan cahaya lembut untuk berkumpul.</p>
+      </article>
+      <article class="cat-card">
+        <figure class="figure"><img src="https://images.pexels.com/photos/8251670/pexels-photo-8251670.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Kamar Tidur" loading="lazy" decoding="async"><figcaption class="tag">Inspirasi Interior</figcaption></figure>
+        <h3>Kamar Tidur</h3>
+        <p>Warna netral dan tekstur alami untuk istirahat yang tenang.</p>
+      </article>
+      <article class="cat-card">
+        <figure class="figure"><img src="https://images.pexels.com/photos/8251780/pexels-photo-8251780.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Ruang Makan" loading="lazy" decoding="async"><figcaption class="tag">Inspirasi Interior</figcaption></figure>
+        <h3>Ruang Makan</h3>
+        <p>Meja kayu dan penataan sederhana untuk makan bersama.</p>
+      </article>
+      <article class="cat-card">
+        <figure class="figure"><img src="https://images.pexels.com/photos/8251247/pexels-photo-8251247.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Kabinet dan Penyimpanan" loading="lazy" decoding="async"><figcaption class="tag">Inspirasi Interior</figcaption></figure>
+        <h3>Kabinet &amp; Penyimpanan</h3>
+        <p>Penyimpanan rapi yang menyatu dengan karakter ruang.</p>
+      </article>
+      <article class="cat-card">
+        <figure class="figure"><img src="https://images.pexels.com/photos/8251291/pexels-photo-8251291.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Sudut Santai" loading="lazy" decoding="async"><figcaption class="tag">Inspirasi Interior</figcaption></figure>
+        <h3>Sudut Santai</h3>
+        <p>Kursi kayu dan meja kecil di dekat jendela.</p>
+      </article>
+      <article class="cat-card">
+        <figure class="figure"><img src="https://images.pexels.com/photos/6692149/pexels-photo-6692149.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Rak dan Dekorasi" loading="lazy" decoding="async"><figcaption class="tag">Inspirasi Interior</figcaption></figure>
+        <h3>Rak &amp; Dekorasi</h3>
+        <p>Keramik dan aksen natural sebagai sentuhan akhir.</p>
+      </article>
+    </div>
+    <p class="cat-more"><a class="textlink wa" href="https://wa.me/6281995426691" target="_blank" rel="noopener">Diskusikan Pilihan Anda <span class="arrow" aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
@@ -441,34 +454,8 @@ footer .block a:hover{border-color:var(--charcoal)}
       <p class="note">Punya foto ruangan atau referensi desain? Kirimkan melalui WhatsApp untuk membantu pembahasan awal.</p>
     </div>
     <figure class="figure">
-      <!-- GANTI dengan foto interior asli bila sudah tersedia -->
-      <svg viewBox="0 0 500 400" role="img" aria-label="Ilustrasi sudut baca dengan kursi santai dan rak kayu">
-        <defs>
-          <linearGradient id="wallC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EDE3D1"/><stop offset="1" stop-color="#DCCDB4"/></linearGradient>
-          <radialGradient id="lampC" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF4D9" stop-opacity=".9"/><stop offset="1" stop-color="#FFF4D9" stop-opacity="0"/></radialGradient>
-        </defs>
-        <rect width="500" height="400" fill="url(#wallC)"/>
-        <!-- rak -->
-        <g fill="#9C7B55"><rect x="40" y="70" width="6" height="230"/><rect x="194" y="70" width="6" height="230"/><rect x="40" y="70" width="160" height="6"/><rect x="40" y="144" width="160" height="6"/><rect x="40" y="218" width="160" height="6"/><rect x="40" y="294" width="160" height="6"/></g>
-        <rect x="58" y="104" width="12" height="40" fill="#3A3733"/><rect x="72" y="112" width="12" height="32" fill="#F6F0E3"/><rect x="86" y="100" width="12" height="44" fill="#8C7B6B"/>
-        <path d="M140 144a22 22 0 0 1 44 0z" fill="#F6F0E3"/>
-        <rect x="60" y="186" width="34" height="32" rx="10" fill="#B28F66"/><rect x="120" y="200" width="60" height="18" rx="3" fill="#3A3733"/>
-        <rect x="64" y="262" width="50" height="32" rx="4" fill="#D8CAB2"/><circle cx="160" cy="276" r="18" fill="#8C9A78"/>
-        <!-- lampu lantai -->
-        <path d="M430 300V120" stroke="#2A2825" stroke-width="3"/>
-        <circle class="glow" cx="430" cy="118" r="90" fill="url(#lampC)"/>
-        <path d="M400 130l12-46h36l12 46z" fill="#FBF3DF"/>
-        <!-- lantai -->
-        <rect y="300" width="500" height="100" fill="#C4A781"/>
-        <path d="M0 340H500" stroke="#A88A62" stroke-width="1" opacity=".6"/>
-        <ellipse cx="320" cy="352" rx="150" ry="24" fill="#E9DFCC"/>
-        <rect x="410" y="296" width="40" height="6" rx="3" fill="#2A2825"/>
-        <!-- kursi santai -->
-        <path d="M250 190c0-18 14-30 32-30h40c18 0 32 12 32 30v70h-104z" fill="#8C7B6B"/>
-        <rect x="238" y="250" width="128" height="34" rx="12" fill="#D8CAB2"/>
-        <path d="M250 284L238 344M354 284L366 344" stroke="#7A5E40" stroke-width="7" stroke-linecap="round"/>
-        <rect x="268" y="206" width="52" height="44" rx="10" fill="#F4EDDF"/>
-      </svg>
+      <!-- Foto contoh dari Pexels. GANTI dengan foto asli bila sudah tersedia -->
+      <img src="https://images.pexels.com/photos/8251242/pexels-photo-8251242.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Kursi kayu dan meja bundar" loading="lazy" decoding="async">
       <figcaption class="tag">Inspirasi Interior</figcaption>
     </figure>
   </div>
@@ -506,7 +493,7 @@ footer .block a:hover{border-color:var(--charcoal)}
         </div>
       </div>
     </div>
-    <p class="copy">© <span id="year">2026</span> BINA LIVING. Gambar pada halaman ini adalah ilustrasi inspirasi interior.</p>
+    <p class="copy">© <span id="year">2026</span> BINA LIVING. Foto pada halaman ini adalah inspirasi interior.</p>
   </div>
 </footer>
 
@@ -515,12 +502,45 @@ footer .block a:hover{border-color:var(--charcoal)}
   Chat BINA LIVING
 </a>
 
+<script src="i18n.js"></script>
 <script>
 (function(){
   // Pesan awal WhatsApp untuk semua tombol konsultasi
-  var pesan = "Halo BINA LIVING, saya tertarik untuk konsultasi. Saya memiliki rencana proyek di [lokasi] untuk [jenis ruang]. Bisa dibantu informasi layanan dan langkah selanjutnya?";
-  var url = "https://wa.me/6281995426691?text=" + encodeURIComponent(pesan);
-  document.querySelectorAll("a.wa").forEach(function(a){ a.href = url; });
+  var pesanID = "Halo BINA LIVING, saya tertarik untuk konsultasi. Saya memiliki rencana proyek di [lokasi] untuk [jenis ruang]. Bisa dibantu informasi layanan dan langkah selanjutnya?";
+  var pesanEN = "Hello BINA LIVING, I'm interested in a consultation. I have a project planned in [location] for [type of space]. Could you share information about your services and the next steps?";
+  function setWA(lang){
+    var url = "https://wa.me/6281995426691?text=" + encodeURIComponent(lang === "id" ? pesanID : pesanEN);
+    document.querySelectorAll("a.wa").forEach(function(a){ a.href = url; });
+  }
+
+  // Pilihan bahasa: teks Indonesia di halaman adalah sumber, terjemahan ada di i18n.js
+  var KODE = ["en","ar","zh","ja","it"], kamus = window.BL_I18N || {}, simpul = [];
+  var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n;
+  while ((n = w.nextNode())) {
+    var p = n.parentNode && n.parentNode.nodeName;
+    if (p === "SCRIPT" || p === "STYLE" || p === "OPTION") continue;
+    var asli = n.nodeValue, kunci = asli.replace(/\s+/g, " ").trim();
+    if (kamus[kunci]) simpul.push({ n: n, asli: asli, kunci: kunci });
+  }
+  var pilih = document.getElementById("lang");
+  function setBahasa(lang){
+    if (lang !== "id" && KODE.indexOf(lang) < 0) lang = "id";
+    var i = KODE.indexOf(lang);
+    simpul.forEach(function(s){
+      if (lang === "id") { s.n.nodeValue = s.asli; return; }
+      var t = kamus[s.kunci][i];
+      s.n.nodeValue = s.asli.replace(s.asli.trim(), function(){ return t; });
+    });
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    pilih.value = lang;
+    setWA(lang);
+    try { localStorage.setItem("bl-lang", lang); } catch (e) {}
+  }
+  pilih.addEventListener("change", function(){ setBahasa(pilih.value); });
+  var awal = "id";
+  try { awal = localStorage.getItem("bl-lang") || awal; } catch (e) {}
+  setBahasa(awal);
 
   // Menu ponsel
   var burger = document.getElementById("burger"), menu = document.getElementById("menu");
