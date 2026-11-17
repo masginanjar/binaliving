@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://binaliving.id/">
 <meta property="og:title" content="BINA LIVING | Desain Interior, Kontraktor Interior, Konsultan Bangunan">
 <meta property="og:description" content="BINA LIVING melayani desain interior, kontraktor interior, dan konsultan bangunan. Ceritakan kebutuhan ruang Anda dan diskusikan proyek melalui WhatsApp.">
-<meta property="og:image" content="https://images.pexels.com/photos/8251293/pexels-photo-8251293.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;h=630&amp;fit=crop">
+<meta property="og:image" content="https://images.pexels.com/photos/29383010/pexels-photo-29383010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;h=630&amp;fit=crop">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BINA LIVING | Desain Interior, Kontraktor Interior, Konsultan Bangunan">
 <meta name="twitter:description" content="BINA LIVING melayani desain interior, kontraktor interior, dan konsultan bangunan. Ceritakan kebutuhan ruang Anda dan diskusikan proyek melalui WhatsApp.">
-<meta name="twitter:image" content="https://images.pexels.com/photos/8251293/pexels-photo-8251293.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;h=630&amp;fit=crop">
+<meta name="twitter:image" content="https://images.pexels.com/photos/29383010/pexels-photo-29383010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;h=630&amp;fit=crop">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -177,6 +177,28 @@ footer .block a{border-bottom:1px solid rgba(42,40,37,.35);padding-bottom:1px;tr
 footer .block a:hover{border-color:var(--charcoal)}
 .copy{margin-top:56px;padding-top:22px;border-top:1px solid rgba(42,40,37,.2);font-size:12.5px;color:var(--taupe);letter-spacing:.04em}
 
+/* Hero cover: foto penuh dengan teks di atasnya */
+.hero{position:relative;isolation:isolate;padding:0;color:var(--ivory);overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(28,26,23,.86) 0%,rgba(28,26,23,.6) 46%,rgba(28,26,23,.12) 100%)}
+[dir="rtl"] .hero::before{background:linear-gradient(270deg,rgba(28,26,23,.86) 0%,rgba(28,26,23,.6) 46%,rgba(28,26,23,.12) 100%)}
+.hero-grid{grid-template-columns:minmax(0,1fr);min-height:clamp(560px,84vh,820px);align-content:center;padding-top:clamp(56px,8vw,110px);padding-bottom:clamp(72px,9vw,120px)}
+.hero-grid > div{max-width:640px}
+.hero .eyebrow{color:var(--sand)}
+.hero h1 span + span{color:var(--sand)}
+.hero .lead{color:#EDE5D6}
+.hero-note{color:#DDD3C2;border-top-color:rgba(247,242,232,.3)}
+.hero .btn-solid{background:var(--ivory);color:var(--charcoal);border-color:var(--ivory)}
+.hero .btn-solid:hover{background:var(--sand);border-color:var(--sand)}
+.hero .btn-ghost{color:var(--ivory);border-color:rgba(247,242,232,.7)}
+.hero .btn-ghost:hover{background:var(--ivory);color:var(--charcoal)}
+.hero-tag{inset-inline-start:auto;inset-inline-end:14px;bottom:14px}
+@media (max-width:760px){
+  .hero::before,[dir="rtl"] .hero::before{background:linear-gradient(180deg,rgba(28,26,23,.55) 0%,rgba(28,26,23,.8) 100%)}
+  .hero-grid{min-height:clamp(560px,82vh,720px);padding-bottom:64px}
+  .hero-bg{object-position:62% center}
+}
+
 /* Tombol chat mengambang */
 .chat{position:fixed;inset-inline-end:20px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:14px 24px 14px 20px;background:var(--charcoal);color:var(--ivory);border-radius:999px;font-size:14.5px;font-weight:500;letter-spacing:.03em;box-shadow:0 10px 30px rgba(42,40,37,.28);transition:transform .35s ease,background .35s ease}
 .chat:hover{transform:translateY(-3px);background:#45413b}
@@ -257,6 +279,9 @@ footer .block a:hover{border-color:var(--charcoal)}
 
 <!-- HERO -->
 <section class="hero" id="beranda">
+  <!-- Foto cover contoh dari Pexels. GANTI dengan foto asli bila sudah tersedia -->
+  <img class="hero-bg" src="https://images.pexels.com/photos/29383010/pexels-photo-29383010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" srcset="https://images.pexels.com/photos/29383010/pexels-photo-29383010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800 800w, https://images.pexels.com/photos/29383010/pexels-photo-29383010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600 1600w, https://images.pexels.com/photos/29383010/pexels-photo-29383010.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2400 2400w" sizes="100vw" alt="Ruang keluarga bergaya Japandi dengan sofa, kursi santai, dan cahaya matahari lembut" fetchpriority="high">
+  <span class="tag hero-tag">Inspirasi Interior</span>
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow rise">Desain Interior · Kontraktor Interior · Konsultan Bangunan</p>
@@ -269,11 +294,6 @@ footer .block a:hover{border-color:var(--charcoal)}
       <p class="hero-note rise d3">Sedang menata ruang baru atau merencanakan renovasi? Mari mulai dari ide Anda.</p>
     </div>
 
-    <figure class="figure rise d1">
-      <!-- Foto contoh dari Pexels. GANTI dengan foto asli bila sudah tersedia -->
-      <img src="https://images.pexels.com/photos/8251293/pexels-photo-8251293.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Ruang keluarga dengan furnitur kayu" decoding="async">
-      <figcaption class="tag">Inspirasi Interior</figcaption>
-    </figure>
   </div>
 </section>
 
